@@ -2,11 +2,11 @@
 <html>
 <head>
     
-    <title>Page title</title>
+    <title>Users</title>
     
 </head>
 <body>
-    <form action="adduser.php" method = "post">
+    <form action="addusers.php" method = "post">
     First name:<input type="text" name="forename"><br>
     Last name:<input type="text" name="surname"><br>
     Password:<input type="password" name="passwd"><br>
@@ -30,7 +30,7 @@
     $stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
     {
-    echo($row["Forename"].' '.$row["Surname"].'-'.$row["House"]."<br>");
+    echo($row["Forename"].' '.$row["Surname"].' - '.$row["House"]."<br>");
     }
 ?>
     

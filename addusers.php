@@ -18,7 +18,7 @@ switch($_POST["role"]){
 		break;
 }
 
-$stmt = $conn->prepare("INSERT INTO tblUsers (UserID,Gender,Surname,Forename,Password,House,Year ,Role)VALUES (null,:gender,:surname,:forename,:password,:house,:year,:role)");
+$stmt = $conn->prepare("INSERT INTO tblusers (UserID,Gender,Surname,Forename,Password,House,Year ,Role)VALUES (null,:gender,:surname,:forename,:password,:house,:year,:role)");
 
 $stmt->bindParam(':forename', $_POST["forename"]);
 $stmt->bindParam(':surname', $_POST["surname"]);
@@ -31,12 +31,13 @@ $stmt->execute();
 }
 
 catch(PDOException $e)
+
 {
     echo "error".$e->getMessage();
 }
 
 $conn=null;
 
-header('Location: user.php');
+header('Location: users.php');
 
 ?>
