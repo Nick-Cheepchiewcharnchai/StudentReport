@@ -7,15 +7,10 @@ include_once("connection.php");
 array_map("htmlspecialchars", $_POST);
 
 
-$stmt = $conn->prepare("INSERT INTO tblsubjects (SubjectID,Subjectname,Teachers)VALUES (null,:gender,:surname,:forename,:password,:house,:year,:role)");
+$stmt = $conn->prepare("INSERT INTO tblsubjects (SubjectID,Subjectname,Teacher)VALUES (null,:subjectname,:teacher)");
 
-$stmt->bindParam(':forename', $_POST["forename"]);
-$stmt->bindParam(':surname', $_POST["surname"]);
-$stmt->bindParam(':house', $_POST["house"]);
-$stmt->bindParam(':year', $_POST["year"]);
-$stmt->bindParam(':password', $_POST["passwd"]);
-$stmt->bindParam(':gender', $_POST["gender"]);
-$stmt->bindParam(':role', $role);
+$stmt->bindParam(':Subjectname', $_POST["subjectname"]);
+$stmt->bindParam(':Teacher', $_POST["teacher"]);
 $stmt->execute();
 }
 
@@ -28,5 +23,8 @@ catch(PDOException $e)
 $conn=null;
 
 header('Location: subjects.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 ?>
